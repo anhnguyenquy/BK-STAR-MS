@@ -14,6 +14,7 @@ export const HomePage = (props) => {
         const { email, password } = formValue
         try {
             const response = await signInWithEmailAndPassword(auth, email, password)
+            console.log(response)
             setUID(response.user.uid)
         }
         catch (error) {
