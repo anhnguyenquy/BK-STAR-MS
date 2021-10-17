@@ -1,0 +1,69 @@
+.viewAsAdmin {
+    width: 100%;
+    height: 115%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Lora", serif;
+    .adminTitle {
+        font-family: 'Montserrat';
+        color: #13AA52;
+        font-weight: bold;
+        font-size: 3rem;
+        margin-top: 3rem;
+        margin-bottom: 2rem;
+    }
+    .adminTable {
+        border: 1px solid black;
+        border-collapse: collapse;
+        font-size: 0.8rem;
+        width: 70rem;
+        margin-bottom: 2rem;
+        .adminTableHeaderRow {
+            .adminTableHeader {
+                border: 1px solid black;
+                padding: 0.5rem;
+            }
+        }
+        .adminTableRow {
+            .adminTableCell {
+                border: 1px solid black;
+                text-align: center;
+                padding: 0.3rem;
+                .editable_text {
+                    background-color: #F3F2EF;
+                    max-width: 90%;
+                    text-align: center;
+                }
+            }
+            .deleteUserCellInAdminTable {
+                button {
+                    background-color: transparent;
+                    color: #e49191;
+                    border: none;
+                }
+                button:hover {
+                    color: rgb(167, 0, 0);
+                }
+            }
+        }
+    }
+    .addUserButtonInAdminTable {
+        width: 2rem;
+        height: 2rem;
+        background-color: transparent;
+        border: 2px solid #13AA52;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #13AA52;
+        font-size: 1.5rem;
+        margin-bottom: 3rem;
+    }
+    .addUserButtonInAdminTable:hover {
+        color: white;
+        background-color: #13AA52;
+    }
+}

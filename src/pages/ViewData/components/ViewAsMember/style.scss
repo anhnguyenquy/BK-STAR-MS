@@ -1,0 +1,23 @@
+.viewAsMember {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Lora", serif;
+    .singleUserTable {
+        border: 1px solid black;
+        border-collapse: collapse;
+        .singleUserTableHeaderRow {
+            .singleUserTableHeader {
+                border: 1px solid black;
+            }
+        }
+        .singleUserTableRow {
+            .singleUserTableCell {
+                border: 1px solid black;
+                text-align: center;
+            }
+        }
+    }
+}

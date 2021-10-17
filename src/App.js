@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import { HomePage, ViewData } from './pages'
+import { useState } from 'react'
+import { useDeviceBreakPoint } from './hooks'
 
 function App() {
+  const [uid, setUID] = useState('')
+  const [memberID, setMemberID] = useState('')
+  const { isPhone, isTablet, isExtraSmall } = useDeviceBreakPoint()
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {
+        !isPhone && !isTablet && !isExtraSmall ?
+          uid == '' && memberID == '' ?
+            <HomePage setUID={setUID} setMemberID={setMemberID} />
+            :
+            <ViewData uid={uid} memberID={memberID} />
+          : 
+          <div className='notice'>Please open this app in a full-screen window on a PC as mobile devices are not supported.</div>
+      }
     </div>
   );
 }
