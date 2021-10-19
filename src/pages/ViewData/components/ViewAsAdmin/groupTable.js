@@ -8,6 +8,8 @@ import { EditableText, EditableTextArea } from '../../../../components'
 
 export const GroupTable = (props) => {
     const { userData, setUserData } = props
+
+    //update data của user
     const updateData = async (fieldName, newValue, id) => {
         if (newValue != undefined && newValue != null) {
             const docRef = doc(firestore, 'humans', id)
@@ -23,6 +25,8 @@ export const GroupTable = (props) => {
             setUserData(newUserData)
         }
     }
+
+    //xóa user khỏi database
     const del = async (id) => {
         const docRef = doc(firestore, 'humans', id)
         await deleteDoc(docRef);
@@ -31,6 +35,7 @@ export const GroupTable = (props) => {
         })
         setUserData(newUserData)
     }
+
     return (
         <Table
             columns={[

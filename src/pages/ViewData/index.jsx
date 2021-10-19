@@ -8,6 +8,8 @@ import { ViewAsMember, ViewAsAdmin, ViewAsCaptain } from './components'
 export const ViewData = (props) => {
     const { uid, memberID } = props
     const [accountType, setAccountType] = useState('')
+
+    //lấy info của user với uid nhận từ <App/> rồi setAccountType thành role của user để có display thích hợp
     useEffect(async () => {
         if (uid != '') {
             const q = query(collection(firestore, 'humans'), where('uid', '==', uid));
@@ -19,6 +21,7 @@ export const ViewData = (props) => {
             setAccountType('member')
         }
     }, [])
+
     return (
         <div className='viewData'>
             {

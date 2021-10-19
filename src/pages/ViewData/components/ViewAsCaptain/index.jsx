@@ -13,6 +13,8 @@ export const ViewAsCaptain = (props) => {
     const { uid } = props
     const [group, setGroup] = useState('')
     const [userData, setUserData] = useState()
+
+    //add user vào nhóm
     const addUser = async () => {
         const newDocData = {
             name: '',
@@ -29,6 +31,8 @@ export const ViewAsCaptain = (props) => {
         const newDoc = {...newDocData, id: docRef.id}
         setUserData([...userData, newDoc])
     }
+
+    //lúc component đc render thì check uid xem đag là trưởng nhóm nào
     useEffect(() => {
         if (uid == process.env.REACT_APP_WEB_CAPTAIN_UID) {
             setGroup('web')
@@ -41,6 +45,7 @@ export const ViewAsCaptain = (props) => {
         }
     }, [])
 
+    //sau khi check nhóm xong thì lấy dữ liệu các user trong nhóm đó
     useEffect(async () => {
         if (group != '') {
             const q = query(collection(firestore, 'humans'), where('group', '==', group));

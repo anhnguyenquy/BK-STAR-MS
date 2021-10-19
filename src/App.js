@@ -10,8 +10,8 @@ function App() {
   return (
     <div className="App">
       {
-        !isPhone && !isTablet && !isExtraSmall ?
-          uid == '' && memberID == '' ?
+        !isPhone && !isTablet && !isExtraSmall ? //Nếu màn hình nhỏ quá thì show message
+          uid == '' && memberID == '' ? //show homepage nếu chưa login hoặc chưa tra ttin nvien
             <HomePage setUID={setUID} setMemberID={setMemberID} />
             :
             <ViewData uid={uid} memberID={memberID} />

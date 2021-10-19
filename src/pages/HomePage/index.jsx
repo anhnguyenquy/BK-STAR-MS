@@ -10,6 +10,8 @@ export const HomePage = (props) => {
     const { setUID, setMemberID } = props
     const { formValue, changeFormValue } = useForm({ email: "", password: "" });
     const [employeeID, setEmployeeID] = useState()
+
+    //Nếu login thành công thì setUID trong <App/> thành uid của user
     const login = async () => {
         const { email, password } = formValue
         try {
@@ -21,11 +23,14 @@ export const HomePage = (props) => {
             alert(error.message)
         }
     }
+
+    //set memberID trong <App/> thành user input
     const fetchEmployeeInfo = () => {
         if (employeeID != undefined && employeeID != null && employeeID != '') {
             setMemberID(employeeID)
         }
     }
+
     return (
         <div className='homePage'>
             <div className='appName'>BK-STAR-MS</div>

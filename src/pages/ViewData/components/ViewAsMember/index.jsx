@@ -10,12 +10,15 @@ import './style.scss'
 export const ViewAsMember = (props) => {
     const { memberID } = props
     const [userData, setUserData] = useState([])
+
+    //lấy dữ liệu user
     useEffect(async () => {
         const q = query(collection(firestore, 'humans'), where('employeeID', '==', memberID.toString()));
         const querySnapshot = await getDocs(q);
         const fetchedUserData = querySnapshot.docs[0].data()
         setUserData([fetchedUserData])
     }, [])
+
     return (
         <div className='viewAsMember'>
             <Table

@@ -8,6 +8,8 @@ import './style.scss'
 
 export const ViewAsAdmin = () => {
     const [userData, setUserData] = useState()
+
+    //addUser vào database
     const addUser = async () => {
         const newDocData = {
             name: '',
@@ -24,7 +26,10 @@ export const ViewAsAdmin = () => {
         const newDoc = {...newDocData, id: docRef.id}
         setUserData([...userData, newDoc])
     }
+
+    //khi component mới đc render thì lấy dữ liệu mọi user rồi truyền dữ liệu vào userData
     useEffect(async () => {
+        //cái này là lấy dữ liệu
         const q = query(collection(firestore, 'humans'));
         const querySnapshot = await getDocs(q);
         const fetchedUserData = querySnapshot.docs
@@ -34,6 +39,8 @@ export const ViewAsAdmin = () => {
             newDocData = { ...newDocData, id: doc.id }
             docs.push(newDocData)
         })
+
+        //đống này là sắp xếp lại các document trong database để display cho hợp lí
         const adminDocs = docs.filter(doc => doc.role == 'admin')
         const captainDocs = docs.filter(doc => doc.role == 'captain')
         const captainWebDocs = captainDocs.filter(doc => doc.group == 'web')
@@ -52,6 +59,7 @@ export const ViewAsAdmin = () => {
         })
         setUserData(sortedDocsCopy)
     }, [])
+
     return (
         <div className='viewAsAdmin'>
             <div className="adminTitle">Admin</div>
